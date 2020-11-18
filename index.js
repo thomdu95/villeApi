@@ -29,10 +29,10 @@ api.get("/name/:startBy", (req, res) => {
 })
 
 api.get("/region/:code", (req, res) => {
-    if (req.params.code.length == 2) {
+    if (req.params.code.length >= 2 && req.params.code.length <= 5) {
         res.json(parsedVilles.filter(elem => elem["Code_postal"].toString().startsWith(req.params.code)))
     } else {
-        res.status(203).send("Bad Code, should contains 2 numbers only")
+        res.status(203).send("Bad Code, should contains between 2 and 5 numbers only")
     }
 })
 
